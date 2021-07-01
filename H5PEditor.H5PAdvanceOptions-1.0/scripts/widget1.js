@@ -40,7 +40,44 @@ H5P.jQuery(document).ready(function () {
         // math jax plugin configuration
         config.mathJaxClass = 'math-tex';
         config.mathJaxLib = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML';
-
+        // Remove Formating Plugin
+        config.removeFormatLib = CKEDITOR.basePath + 'plugins/removeformat/plugin.js';
+        // Export to Pdf Plugin
+        config.exportToPdfLib = CKEDITOR.basePath + 'plugins/exportpdf/plugin.js';
+        // Basic Styles Plugin
+        config.basicStyleLib = CKEDITOR.basePath + 'plugins/basicstyles/plugin.js';
+        // Spacing slider Plugin
+        config.spacingSliderLib = CKEDITOR.basePath + 'plugins/spacingsliders/plugin.js';
+        // Find Plugin
+        config.findLib = CKEDITOR.basePath + 'plugins/find/plugin.js';
+        // List style Plugin
+        config.listStyleLib = CKEDITOR.basePath + 'plugins/liststyle/plugin.js';
+        // Footnote Plugin 
+        config.FootNoteLib = CKEDITOR.basePath + 'plugins/footnotes/plugin.js';
+        // Bidi Text Direction Plugin
+        config.bidiLib = CKEDITOR.basePath + 'plugins/bidi/plugin.js';
+        // Special Character Plugin
+        config.specialCharLib = CKEDITOR.basePath + 'plugins/specialchar/plugin.js';
+        // Div Container Plugin
+        config.divContainerLib = CKEDITOR.basePath + 'plugins/div/plugin.js';
+        // Source Dialog Plugini
+        config.sourcedialogLib = CKEDITOR.basePath + 'plugins/sourcedialog/plugin.js';
+        // Increase/decrease Indent Plugin
+        config.indentLib = CKEDITOR.basePath + 'plugins/indent/plugin.js';
+        // Indent Block Dependency for Indent Plugin
+        config.indentBlockLib = CKEDITOR.basePath + 'plugins/indentblock/plugin.js';
+        // Copy Formatting Plugin
+        config.copyFormattingLib = CKEDITOR.basePath + 'plugins/copyformatting/plugin.js';
+        // Show Block Plugin
+        config.showBlockLib = CKEDITOR.basePath + 'plugins/showblocks/plugin.js';
+        // ClipBoard Plugin
+        config.clipboardLib = CKEDITOR.basePath + 'plugins/clipboard/plugin.js';
+        // Templates Plugin
+        config.templatesLib = CKEDITOR.basePath + 'plugins/templates/plugin.js';
+        // Select All Plugin
+        config.selectAllLib = CKEDITOR.basePath + 'plugins/selectall/plugin.js';
+        // Forms Plugin 
+        // config.formLib = CKEDITOR.basePath + 'plugins/forms/plugin.js';
         // Add plugin to config
         config.extraPlugins = (config.extraPlugins ? ',' : '') + 'insertfiles,pastefromgdocs,mathjax';
 

@@ -40,59 +40,64 @@ H5P.jQuery(document).ready(function () {
         // math jax plugin configuration
         config.mathJaxClass = 'math-tex';
         config.mathJaxLib = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML';
-        // Remove Formating Plugin
-        config.removeFormatLib = CKEDITOR.basePath + 'plugins/removeformat/plugin.js';
-        // Export to Pdf Plugin
-        config.exportToPdfLib = CKEDITOR.basePath + 'plugins/exportpdf/plugin.js';
-        // Basic Styles Plugin
-        config.basicStyleLib = CKEDITOR.basePath + 'plugins/basicstyles/plugin.js';
-        // Spacing slider Plugin
-        config.spacingSliderLib = CKEDITOR.basePath + 'plugins/spacingsliders/plugin.js';
-        // Find Plugin
-        config.findLib = CKEDITOR.basePath + 'plugins/find/plugin.js';
-        // List style Plugin
-        config.listStyleLib = CKEDITOR.basePath + 'plugins/liststyle/plugin.js';
-        // Footnote Plugin 
-        config.FootNoteLib = CKEDITOR.basePath + 'plugins/footnotes/plugin.js';
-        // Bidi Text Direction Plugin
-        config.bidiLib = CKEDITOR.basePath + 'plugins/bidi/plugin.js';
-        // Special Character Plugin
-        config.specialCharLib = CKEDITOR.basePath + 'plugins/specialchar/plugin.js';
-        // Div Container Plugin
-        config.divContainerLib = CKEDITOR.basePath + 'plugins/div/plugin.js';
-        // Source Dialog Plugini
-        config.sourcedialogLib = CKEDITOR.basePath + 'plugins/sourcedialog/plugin.js';
-        // Increase/decrease Indent Plugin
-        config.indentLib = CKEDITOR.basePath + 'plugins/indent/plugin.js';
-        // Indent Block Dependency for Indent Plugin
-        config.indentBlockLib = CKEDITOR.basePath + 'plugins/indentblock/plugin.js';
-        // Copy Formatting Plugin
-        config.copyFormattingLib = CKEDITOR.basePath + 'plugins/copyformatting/plugin.js';
+        
         // Add plugin to config
         config.extraPlugins = (config.extraPlugins ? ',' : '') + 
-        'pastefromgdocs,mathjax,exportpdf,basicstyles,spacingsliders,find,liststyle,footnotes,bidi,specialchar,div,sourcedialog,indent,indentblock,copyformatting';
+        'dialog,pastefromgdocs,mathjax,exportpdf,basicstyles,spacingsliders,find,'+
+        'liststyle,footnotes,bidi,specialchar,div,sourcedialog,indent,indentblock,copyformatting,'+
+        'showblocks,clipboard,templates,selectall,forms,table,smiley';
 
         // Looking inside plugin.js I see that InsertFiles should go into
         // the 'insert' toolbar group. So let's create it and add the button
-        config.toolbar.push({
-            name: 'insert',
-            items: ['Underline', 'spacingsliders', 'Footnotes', 'SpecialChar']
+        config.toolbar.unshift({
+            name: 'tools',
+            items: ['Source']
         });
-
-        config.toolbar.push({
+        config.toolbar.splice(1,0,{
             name: 'insert',
-            items: ['Mathjax', 'ExportPdf', 'Find']
+            items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord']
         });
+        config.toolbar.splice(2,0,{
+            name: 'insert',
+            items: ['Undo', 'Redo']
+        });
+        config.toolbar.splice(8,0,
+            {
+                name: 'tools',
+                items: ['Subscript', 'Superscript', 'BidiLtr', 'BidiRtl']
+            },
+            {
+                name: 'insert',
+                items: ['Underline', 'spacingsliders', 'Footnotes', '-', 'SpecialChar']
+            },
+            {
+                name: 'insert',
+                items: ['Styles']
+            }
+        );
 
         config.toolbar.push({
             name: 'tools',
-            items: ['Subscript', 'Superscript', 'BidiLtr', 'BidiRtl']
+            items: ['CreateDiv', 'Outdent', 'Indent', '-', 'CopyFormatting']
         });
-
-        config.toolbar.push({
+        config.toolbar.splice(12,0,{
             name: 'tools',
-            items: ['CreateDiv', 'Source', 'Outdent', 'Indent', 'CopyFormatting']
+            items: ['ShowBlocks', 'Templates', 'SelectAll', 'Scayt']
         });
+        config.toolbar.splice(7,0,
+            {
+                name: 'tools',
+                items: ['Form', 'TextField', 'Textarea', 'Checkbox', 'Radio', 'Select', 'Button', 'ImageButton', 'HiddenField']
+            },
+            {
+                name: 'insert',
+                items: ['Mathjax', 'ExportPdf']
+            },
+            {
+                name: 'tools',
+                items: ['Find', 'Smiley', 'Maximize', 'Anchor']
+            }
+        );
         // Add our special tags
         tags.push('additional');
     };
