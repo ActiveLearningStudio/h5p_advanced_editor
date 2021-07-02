@@ -14,7 +14,7 @@ H5P.jQuery(document).ready(function () {
     // custom callback
     H5PEditor.HtmlAddons.additional.additional = function (config, tags) {
         config.removePlugins = 'cloudservices,easyimage,googledocs';
-        config.removeButtons = 'Image,Table';
+        // config.removeButtons = '';
 
         // Print debug to browser console (Ctrl+Shift+J in Chrome)
         console.log('Adding Extra Plugins for Documents Curriki...');
@@ -45,7 +45,8 @@ H5P.jQuery(document).ready(function () {
         config.extraPlugins = (config.extraPlugins ? ',' : '') + 
         'dialog,pastefromgdocs,mathjax,exportpdf,basicstyles,spacingsliders,find,'+
         'liststyle,footnotes,bidi,specialchar,div,sourcedialog,indent,indentblock,copyformatting,'+
-        'showblocks,clipboard,templates,selectall,forms,table,smiley';
+        'showblocks,clipboard,templates,selectall,forms,smiley,tabletoolstoolbar,timestamp,abbr,'+
+        'autolink,youtube,chart,spoiler,textindent,brclear,leomodel';
 
         // Looking inside plugin.js I see that InsertFiles should go into
         // the 'insert' toolbar group. So let's create it and add the button
@@ -64,7 +65,21 @@ H5P.jQuery(document).ready(function () {
         config.toolbar.splice(8,0,
             {
                 name: 'tools',
-                items: ['Subscript', 'Superscript', 'BidiLtr', 'BidiRtl']
+                items: [
+                    'tabledelete', 'tableproperties', '-', 
+                    'tablerowinsertbefore', 'tablerowinsertafter',
+                    'tablerowdelete', '-', 'tablecolumninsertbefore',
+                    'tablecolumninsertafter', 'tablecolumndelete',
+                    '-', 'tablecellinsertbefore', 'tablecellinsertafter',
+                    'tablecelldelete', 'tablecellproperties', '-',
+                    'tablecellsmerge', 'tablecellmergeright',
+                    'tablecellmergedown', 'tablecellsplithorizontal',
+                    'tablecellsplitvertical'
+                ]
+            },
+            {
+                name: 'tools',
+                items: ['Subscript', 'Superscript', 'BidiLtr', 'BidiRtl', 'brclear']
             },
             {
                 name: 'insert',
@@ -76,14 +91,24 @@ H5P.jQuery(document).ready(function () {
             }
         );
 
-        config.toolbar.push({
-            name: 'tools',
-            items: ['CreateDiv', 'Outdent', 'Indent', '-', 'CopyFormatting']
-        });
-        config.toolbar.splice(12,0,{
-            name: 'tools',
-            items: ['ShowBlocks', 'Templates', 'SelectAll', 'Scayt']
-        });
+        config.toolbar.push(
+            {
+                name: 'tools',
+                items: ['ShowBlocks', 'Templates', 'SelectAll', 'Scayt']
+            },
+            {
+                name: 'tools',
+                items: ['CreateDiv', 'Outdent', 'Indent', '-', 'CopyFormatting']
+            },
+            {
+                name: 'tools',
+                items: ['Youtube', '-', 'Abbr', 'Chart', 'Spoiler', 'textindent']
+            },
+            {
+                name: 'tools',
+                items: ['Timestamp', 'leomodel']
+            },
+        );
         config.toolbar.splice(7,0,
             {
                 name: 'tools',

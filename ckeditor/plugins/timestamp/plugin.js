@@ -25,7 +25,7 @@ CKEDITOR.plugins.add( 'timestamp', {
 				var now = new Date();
 
 				// Insert the timestamp into the document.
-				editor.insertHtml( '<input type="checkbox">' );
+				editor.insertHtml( '<em>' + now.toString() + '</em>' );
 			}
 		});
 
