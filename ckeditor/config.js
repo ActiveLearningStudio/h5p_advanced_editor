@@ -45,4 +45,5 @@ CKEDITOR.editorConfig = function( config ) {
 	config.autoGrow_onStartup = true;
 	config.isFormatting = true;
 	config.colorButton_enableMore = true;
+	
 };

@@ -24,3 +24,26 @@ Usage
 			https://ckeditor.com/cke4/addon/copyformatting
 			https://ckeditor.com/cke4/addon/exportpdf
 			https://ckeditor.com/cke4/addon/footnotes
+			https://ckeditor.com/cke4/addon/clipboard
+			https://ckeditor.com/cke4/addon/undo
+			https://ckeditor.com/cke4/addon/forms
+			https://ckeditor.com/cke4/addon/smiley
+			https://ckeditor.com/cke4/addon/maximize
+			https://ckeditor.com/cke4/addon/basicstyles
+			https://ckeditor.com/cke4/addon/showblocks
+			https://ckeditor.com/cke4/addon/selectall
+			https://ckeditor.com/cke4/addon/scayt
+			https://ckeditor.com/cke4/addon/image
+			https://ckeditor.com/cke4/addon/table
+			https://ckeditor.com/cke4/addon/youtube
+			https://ckeditor.com/cke4/addon/tabletools
+			https://ckeditor.com/cke4/addon/btgrid
+			https://ckeditor.com/cke4/addon/zoom
+			https://ckeditor.com/cke4/addon/tablesorter
+			https://ckeditor.com/cke4/addon/ckeditor-gwf-plugin
+			https://ckeditor.com/cke4/addon/a11yheading
+			https://ckeditor.com/cke4/addon/texttransform
+			https://ckeditor.com/cke4/addon/markdown
+			https://ckeditor.com/cke4/addon/a11yfirsthelp
+			https://ckeditor.com/cke4/addon/autocomplete
+			https://ckeditor.com/cke4/addon/replaceTagNameByBsquochoai

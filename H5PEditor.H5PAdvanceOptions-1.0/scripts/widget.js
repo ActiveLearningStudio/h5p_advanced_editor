@@ -40,13 +40,15 @@ H5P.jQuery(document).ready(function () {
         // math jax plugin configuration
         config.mathJaxClass = 'math-tex';
         config.mathJaxLib = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML';
-        
+        config.spoilerLib = CKEDITOR.basePath + 'plugins/spoiler/plugin.js';
         // Add plugin to config
         config.extraPlugins = (config.extraPlugins ? ',' : '') + 
         'dialog,pastefromgdocs,mathjax,exportpdf,basicstyles,spacingsliders,find,'+
         'liststyle,footnotes,bidi,specialchar,div,sourcedialog,indent,indentblock,copyformatting,'+
-        'showblocks,clipboard,templates,selectall,forms,smiley,tabletoolstoolbar,timestamp,abbr,'+
-        'autolink,youtube,chart,spoiler,textindent,brclear,leomodel';
+        'showblocks,clipboard,selectall,forms,smiley,tabletoolstoolbar,timestamp,'+
+        'autolink,youtube,brclear,leomodel,btgrid,zoom,imageresizerowandcolumn,tablesorter,ckeditor-gwf-plugin,'+
+        'notification,inserthtmlfile,imageuploader,texttransform,a11yheading,a11yfirsthelp,markdown,'+
+        'tableselection,replaceTagNameByBsquochoai,textwatcher,autocomplete,textmatch,autotag';
 
         // Looking inside plugin.js I see that InsertFiles should go into
         // the 'insert' toolbar group. So let's create it and add the button
@@ -94,7 +96,7 @@ H5P.jQuery(document).ready(function () {
         config.toolbar.push(
             {
                 name: 'tools',
-                items: ['ShowBlocks', 'Templates', 'SelectAll', 'Scayt']
+                items: ['ShowBlocks', 'SelectAll', 'Scayt']
             },
             {
                 name: 'tools',
@@ -102,12 +104,24 @@ H5P.jQuery(document).ready(function () {
             },
             {
                 name: 'tools',
-                items: ['Youtube', '-', 'Abbr', 'Chart', 'Spoiler', 'textindent']
+                items: ['Youtube', '-', 'btgrid', 'Zoom', 'Heading']
+            },
+            { 
+                name: 'texttransform', 
+                items: [ 'TransformTextToUppercase', 'TransformTextToLowercase', 'TransformTextCapitalize', 'TransformTextSwitcher' ] 
             },
             {
                 name: 'tools',
-                items: ['Timestamp', 'leomodel']
+                items: ['Timestamp', 'leomodel', '-', 'inserthtmlfile', 'replaceTagName']
             },
+            {
+                name: 'markdown',
+                items: ['Markdown']
+            },
+            {
+                name: 'tools',
+                items: ['A11yFirstHelp']
+            }         
         );
         config.toolbar.splice(7,0,
             {
@@ -124,6 +138,7 @@ H5P.jQuery(document).ready(function () {
             }
         );
         // Add our special tags
+        config.font_names = 'GoogleWebFonts';        
         tags.push('additional');
     };
 });

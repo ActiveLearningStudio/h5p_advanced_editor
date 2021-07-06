@@ -34,7 +34,7 @@ dyn[1] = {
             '<p>Content</p>'+
         '</div>'+
         '<div class="grid4 col3">'+
-            '<p>Text</p>'+
+            '<p>Content</p>'+
         '</div>'+
      '</div>',
   e: {
