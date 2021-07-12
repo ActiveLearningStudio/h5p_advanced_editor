@@ -2,8 +2,9 @@
 session_start();
 if(isset($_FILES['upload'])){
   $errors= array();
-  $file_ext = strtolower(end(explode('.',$_FILES['upload']['name'])));
-  $file_name = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', pathinfo($_FILES['upload']['name'], PATHINFO_FILENAME)))).".".$file_ext;
+  $temp = explode('.',$_FILES['upload']['name']);
+  $file_ext = strtolower(end($temp));
+  $file_name = $temp[0].round(microtime(true)) .".".$file_ext;
   $file_size = $_FILES['upload']['size'];
   $file_tmp = $_FILES['upload']['tmp_name'];
   $file_type = $_FILES['upload']['type'];
@@ -32,8 +33,20 @@ if(isset($_FILES['upload'])){
   }
 
   if(empty($errors) == true) {
-    if(move_uploaded_file($_FILES["upload"]["tmp_name"], $_SESSION['doc_upload_path'].$file_name)){
-      echo json_encode(['uploaded' => 1, "fileName" => $file_name, "url" => $_SESSION['doc_files_url'] . $file_name]);
+    $folder_path = dirname(__FILE__, 11).'/default/files/h5p_files/';
+    // Create Directory
+    if(!is_dir($folder_path)) {
+      mkdir($folder_path);
+    }
+
+    if(move_uploaded_file($_FILES["upload"]["tmp_name"], $folder_path.$file_name)){
+      if(isset($_SERVER['HTTPS'])){
+        $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
+      } else{
+        $protocol = 'http';
+      }
+      $url = $protocol."://".$_SERVER['HTTP_HOST'] .'/sites/default/files/h5p_files/'.$file_name;
+      echo json_encode(['uploaded' => 1, "fileName" => $file_name, "url" => $url ]);
       exit();
     }
     $errors[] = "File could not be uploaded!";

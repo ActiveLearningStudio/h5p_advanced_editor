@@ -5,10 +5,11 @@ H5P.H5PAdvanceOptions = (function ($) {
      * Constructor function.
      */
     function C(options, id) {
-        // Extend defaults with provided options
+        // Extend defaults with provided options        
         this.options = $.extend(true, {}, {
             title: 'Default title',
-            documentcontent: 'Documents LALA'
+            documentcontent: 'params',
+            
         }, options);
         // Keep provided id.
         this.id = id;
@@ -21,12 +22,10 @@ H5P.H5PAdvanceOptions = (function ($) {
      * @param {jQuery} $container
      */
     C.prototype.attach = function ($container) {
-        console.log('H5P: Rendering DocumentsUpload.');
-        console.log($.parseHTML(this.options.documentcontent));
-        $container.addClass("h5p-document");
+        $container.addClass("field-items");
 
         // $container.append('<h1 class="document-title" style="text-align: center;">' + this.options.title + '</h1>');
-        $container.append('<div class="document-content">' + decodeEntities(this.options.documentcontent) + '</div>');
+        $container.append('<div class="field-item even">' + decodeEntities(this.options.documentcontent) + '</div>');
 
         setTimeout(iframesCheck, 3000);
     };
@@ -54,7 +53,6 @@ H5P.H5PAdvanceOptions = (function ($) {
                 var iframe_url = element.attr("src")
                 element.attr("src", iframe_url);
                 count++;
-                console.log("IFrame ReLoaded...");
                 return;
             }
             clearInterval(intervalID);
@@ -69,7 +67,7 @@ H5P.H5PAdvanceOptions = (function ($) {
      */
     function isIframeLoaded(ele) {
         try {
-            console.log(ele.contentWindow); // if iframe is loaded this will through exception due to cross-origin policy
+            // console.log(ele.contentWindow); // if iframe is loaded this will through exception due to cross-origin policy
             return false; // if here means exception is not thrown so content is not loaded in iframe
         } catch (err) {
             return true;
@@ -83,6 +81,7 @@ H5P.H5PAdvanceOptions = (function ($) {
      */
     function decodeEntities(encodedString) {
         var textArea = document.createElement('textarea');
+        // console.log(encodedString)
         textArea.innerHTML = encodedString;
         return textArea.value;
     }
